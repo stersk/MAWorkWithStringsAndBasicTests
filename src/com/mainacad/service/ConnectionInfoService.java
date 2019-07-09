@@ -36,4 +36,33 @@ public class ConnectionInfoService {
 
     return stringBuilder.toString();
   }
+
+  public static Queue<ConnectionInfo> getConnectionsFromText(String text){
+    Queue<ConnectionInfo> connections = new PriorityQueue<>();
+
+    String[] lines = text.split("\n");
+
+    for (String line : lines){
+      String[] words = line.split(" ");
+
+      User user = new User(Integer.valueOf(words[5]), words[3], words[4]);
+
+      ConnectionInfo connectionInfo = new ConnectionInfo(user, Integer.valueOf(words[1]),
+              words[2], Long.valueOf(words[0]));
+
+      connections.add(connectionInfo);
+    }
+
+    return connections;
+  }
+
+  public static Queue<ConnectionInfo> filterConnectionsByTime(Collection<ConnectionInfo> allConnections, long from, long to){
+    Queue<ConnectionInfo> connections = new PriorityQueue<>();
+    for (ConnectionInfo connectionInfo: allConnections) {
+      if (connectionInfo.getTime() >= from && connectionInfo.getTime() <= to){
+        connections.add(connectionInfo);
+      }
+    }
+    return connections;
+  }
 }

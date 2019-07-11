@@ -1,6 +1,8 @@
 package com.mainacad.model;
 
-public class ConnectionInfo implements Comparable<ConnectionInfo>{
+import java.io.Serializable;
+
+public class ConnectionInfo implements Comparable<ConnectionInfo>, Serializable {
   private User user;
   private Integer sessionId;
   private String userIp;

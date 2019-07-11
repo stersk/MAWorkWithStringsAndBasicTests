@@ -3,6 +3,7 @@ package com.mainacad.service;
 import com.mainacad.model.ConnectionInfo;
 import com.mainacad.model.User;
 import com.mainacad.util.Randomizer;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collection;
 import java.util.Date;
